@@ -1,0 +1,9 @@
+from itertools import product
+s = product('БЕРКЛИЙ', repeat=4)
+k = 0
+for x in s:
+    x = ''.join(x)
+    if x[0] != 'Й':
+        if 'Е' in x or 'И' in x:
+            k += 1
+print(k)
