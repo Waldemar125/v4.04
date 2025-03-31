@@ -1,0 +1,18 @@
+from itertools import product
+s = product('041', repeat=10)
+m = -1
+for x in s:
+    x = ''.join(x) + '<'
+    while '4<' in x or '11<' in x or '00<' in x:
+        if '11<' in x:
+            x = x.replace('11<', '<9', 1)
+        if '4<' in x:
+            x = x.replace('4<', '<5', 1)
+        if '00<' in x:
+            x = x.replace('00<', '<92', 1)
+    n = 1
+    for i in x:
+        if i.isdigit():
+            n *= int(i)
+    m = max(n, m)
+print(m)
