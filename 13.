@@ -1,0 +1,13 @@
+from ipaddress import *
+mask = '255.255.254.0'
+for a in range(256):
+    ip = f'159.242.{a}.223'
+    net = ip_network(f'{ip}/{mask}', False)
+    pr, lv = 0, 0
+    for i in net:
+        x = str(i).split('.')
+        x = [bin(int(j))[2:].count('0') for j in x]
+        lv += x[0] + x[1]
+        pr += x[2] + x[3]
+    if lv < pr:
+        print(a)
