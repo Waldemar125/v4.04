@@ -1,0 +1,6 @@
+from re import findall
+with open('24-320') as f:
+    s = f.readline()
+a = findall(r'\d+(?:=\d+)+', s)
+b = [i for i in a if '77' in i.split('=')]
+print(len(max(b, key=len)))
