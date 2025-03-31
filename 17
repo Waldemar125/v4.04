@@ -1,0 +1,13 @@
+with open('17-361') as f:
+    s = [int(i) for i in f.readlines()]
+mn = min([i for i in s if abs(i) % 100 == 40])
+k, m = 0, 0
+for i in range(len(s) - 2):
+    a, b, c = s[i], s[i + 1], s[i + 2]
+    h = [a, b, c]
+    if len(set(h)) == 2:
+        if min(a, b, c) > mn:
+            k += 1
+            print(a, b, c)
+            print(i + 1, i + 2, i + 3)
+print(k)
