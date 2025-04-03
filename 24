@@ -2,5 +2,12 @@ from re import findall
 with open('24-320') as f:
     s = f.readline()
 a = findall(r'\d+(?:=\d+)+', s)
-b = [i for i in a if '77' in i.split('=')]
+b = []
+for x in a:
+    if '=77=' in x:
+        b.append(x)
+    if '77=' in x:
+        b.append(x[x.find('77='):])
+    if '=77' in x:
+        b.append(x[:x.rfind('=77')] + '=77')
 print(len(max(b, key=len)))
