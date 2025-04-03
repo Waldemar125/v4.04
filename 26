@@ -1,0 +1,17 @@
+with open('26-16') as f:
+    d = f.readlines()
+    n = int(d.pop(0).split()[0])
+    s = sorted([int(i) for i in d])
+m, k, mi = 0, 0, 0
+for i in range(len(s)):
+    if s[i] < n:
+        n -= s[i]
+        k += 1
+        m = s[i]
+        mi = i
+n += m
+mx = 0
+for x in s:
+    if x < n:
+        mx = x
+print(k, mx)
